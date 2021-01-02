@@ -197,21 +197,3 @@ $("#ticketBtn").click(function () {
 // 	location.assign("trips.html");
 
 // });
-
-if($_C().getCookie("ConfirmFlag")== 0)
-{ 
-    $("#Lines").click(function(){
-        var rebook = confirm("Are you sure you want to start over?");
-        if(rebook==true)
-        {
-            $_C().DeleteCookie("FromLine");
-            $_C().DeleteCookie("FromStation");
-            $_C().DeleteCookie("ToLine");
-            $_C().DeleteCookie("ToStation");
-            $_C().DeleteCookie("Price");
-            $_C().DeleteCookie("number_of_chair");
-            location.assign("lines.html");
-        }
-        else {location.reload();}
-    });
-}

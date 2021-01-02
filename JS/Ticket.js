@@ -41,7 +41,7 @@ $("#price").html($_C().getCookie("Price"));
 
 $("#no_Seats").html($_C().getCookie("number_of_chair"));
 $("#TotalP").html(($_C().getCookie("number_of_chair")) * ($_C().getCookie("Price")));
-$("#Code").html("<p id='Code_paragraph'>Enter This code in any Fawry machine to complete your reservation within 24 hours</p>" + "<p id='codeNum'>9752674714</p>");
+$("#Code").html("<p id='Code_paragraph'>Enter This code in any Fawry machine to complete your reservation within 24 hours</p>" + "<p id='codeNum'>"+Math.ceil(Math.random()*1000000000)+"</p>");
 $("#time").html(currentTime.getHours() + ":" + currentTime.getMinutes())
 
 $("#back_To_Lines").click(function (e) {
@@ -70,22 +70,4 @@ $("#Confirm").click(function () {
     location.assign("trips.html");
 });
  
-
-if($_C().getCookie("ConfirmFlag")== 0)
-{ 
-    $("#Lines").click(function(){
-        var rebook = confirm("Are you sure you want to start over?");
-        if(rebook==true)
-        {
-            $_C().DeleteCookie("FromLine");
-            $_C().DeleteCookie("FromStation");
-            $_C().DeleteCookie("ToLine");
-            $_C().DeleteCookie("ToStation");
-            $_C().DeleteCookie("Price");
-            $_C().DeleteCookie("number_of_chair");
-            location.assign("lines.html");
-        }
-        else {location.reload();}
-    });
-}
 
