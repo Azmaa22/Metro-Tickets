@@ -59,11 +59,8 @@ $("#Btn").click(function (e) {
             {
                 location.assign("profile.html");
                 $_C().setCookie("userVisit",1);
-                if(info.users[i].flag=="1")
-                {
-                    $("#logBtn").css("display","none");
-                    $("#regesterBTN").css("display","none");
-                }    
+                $("#logBtn").css("display","none");
+                $("#regesterBTN").css("display","none");    
             }
             else
             {
@@ -142,4 +139,8 @@ function get ()
 
 function closeTab(){
     $("#Error").slideUp();
+}
+
+if ($_C().getCookie("userVisit") == 1) {
+    location.assign("profile.html");
 }

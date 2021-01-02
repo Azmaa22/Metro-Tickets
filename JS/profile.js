@@ -62,18 +62,6 @@ function check() {
 
 ////////////////////////////////////
 
-//WHEN CLICKING ON LINES ANCHOR
-function checklines() {
-    if ($_C().getCookie("userVisit") == 1) {
-        location.assign("lines.html");
-    }
-    else {
-        alert("You are not logged in please login and try again :)");
-    }
-}
-
-
-////////////////////////////////////
 
 //WHEN NAVIGATING IN URL WITHOUT LOG IN
 function checkl() {
@@ -136,13 +124,54 @@ function savee() {
 
 //////////////////////////////////
 
+//WHEN CLICKING ON LINES ANCHOR
 //RESERVING ONE TRIP WITH NO OVERWRITE
 //CONFIRMATION ON RE-BOOKING
-if($_C().getCookie("ConfirmFlag")== 1)
+
+function checkLinesBook(){
+if ($_C().getCookie("userVisit") == 1){  //if logged in
+if($_C().getCookie("ConfirmFlag")== 0)  //if trip not confirmed yet
+{
+    if($_C().getCookie("FromLine")==""){location.assign("lines.html")} //if lines not selected yet
+
+    if($_C().getCookie("FromLine")!="") //if lines were selected
+    {
+        if($_C().getCookie("number_of_chair")=="") //if seats not selected yet
+        {
+            var seatconf=confirm("Do you want to continue your booking?"); 
+            if(seatconf==true) {location.assign("seats.html")}  //continuing to seats page not from lines
+            else
+            {
+                $_C().DeleteCookie("FromLine");
+                $_C().DeleteCookie("FromStation");
+                $_C().DeleteCookie("ToLine");
+                $_C().DeleteCookie("ToStation");
+                $_C().DeleteCookie("Price");
+                location.assign("lines.html");
+            }
+        }
+        else  //if seats were selected
+        {
+            var ticketConf=confirm("Do you want to continue your booking?");
+            if(ticketConf==true){ location.assign("ticket.html") }  //continuing to tickets page
+            else
+            {
+                $_C().DeleteCookie("FromLine");
+                $_C().DeleteCookie("FromStation");
+                $_C().DeleteCookie("ToLine");
+                $_C().DeleteCookie("ToStation");
+                $_C().DeleteCookie("Price");
+                $_C().DeleteCookie("number_of_chair");
+                location.assign("lines.html");
+            }
+        }
+    }
+}
+else  //if confirm flag = 1 (if ticket was confirmed )
 { 
-    $("#Lines").click(function(){
+    
         var rebook = confirm("Are you sure you want to re-book and cancel your current booked trip?");
-        if(rebook==true)
+        if(rebook==true) //lines page is accessible //booking process would start over (all cookies deleted)
         {
             $_C().DeleteCookie("FromLine");
             $_C().DeleteCookie("FromStation");
@@ -153,6 +182,7 @@ if($_C().getCookie("ConfirmFlag")== 1)
             $_C().DeleteCookie("ConfirmFlag");
             location.assign("lines.html");
         }
-        else {location.reload();}
-    });
+        else {location.reload();} 
+    }
+ }else alert("You are not logged in, please log in and try again :)");  //if user visit = 0 (user not logged in)
 }
