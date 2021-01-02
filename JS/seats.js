@@ -22,21 +22,8 @@ if (cookieVal == 0) {
 	intVal = parseInt(cookieVal);
 }
 
-for (var i = 1; i <= intVal; i++) { ///to start change new images
+displaySeats(intVal,7,6);  ///to start change new images
 
-
-	if (i <= 6) { //i 1:6
-
-
-		document.getElementsByClassName("status")[i - 1].src = "../img/seats/7.png";
-	}
-	else {  // i 7:12
-
-		document.getElementsByClassName("status")[i - 1].src = "../img/seats/6.png";
-	}
-
-
-}
 
 function bookNow() {
 	cookieVal = $_C().getCookie("number_of_chair");
@@ -56,38 +43,17 @@ function bookNow() {
 	}
 	else {
 		if (intVal != 12) {
-			for (var j = 1; j < intVal; j++) {
-				// document.getElementsByClassName("status")[j].src = "../img/seats/7.png";
-				if (j <= 6) { //i 1:6
-
-
-					document.getElementsByClassName("status")[j - 1].src = "../img/seats/7.png";
-				}
-				else {  // i 7:12
-
-					document.getElementsByClassName("status")[j - 1].src = "../img/seats/6.png";
-				}
-
-			}
+			
+			displaySeats(intVal,7,6);
+			
 			remain = totalNum - intVal;///12- oldValue of cookie "the first time will be 0 "
 
 			if (numChair <= remain) {
 				newVal = numChair + intVal; ///update cookie
 				$_C().setCookie("number_of_chair", newVal, 1);
-				for (var i = 1; i <= newVal; i++) { ///to start change new images
-
-					if (i <= 6) { //i 1:6
-
-
-						document.getElementsByClassName("status")[i - 1].src = "../img/seats/7.png";
-					}
-					else {  // i 7:12
-
-						document.getElementsByClassName("status")[i - 1].src = "../img/seats/6.png";
-					}
-
-
-				}
+				
+		        displaySeats(newVal,7,6);
+				
 				alert("Congratulations :) Seats Booking is Done");
 			}
 			else { alert("Please enter less number of seats :("); }
@@ -116,22 +82,9 @@ function cancelBook() {
 		newVal = intVal - numChair;
 		if (numChair <= intVal) {
 			$_C().setCookie("number_of_chair", newVal);
-			for (var i = 1; i <= numChair; i++) {
-
-				if (i <= 6) { //i 1:6
-
-
-					document.getElementsByClassName("status")[i - 1].src = "../img/seats/9.png";
-
-				}
-				else {  // i 7:12
-
-					document.getElementsByClassName("status")[i - 1].src = "../img/seats/8.png";
-				}
-
-
-
-			}
+			
+			displaySeats(numChair,9,8);
+			
 			alert("Cancelation Done");
 			location.reload();
 		} else { alert("The number you entered is more than your booked seats :("); }
@@ -165,11 +118,21 @@ $("#ticketBtn").click(function () {
 	location.assign("Ticket.html");
 });
 
-// $("#Trips").click(function () {
-// 	if (($_C().getCookie("ConfirmFlag") == 0) && ($_C().getCookie("number_of_chair") == 0)) {
-// 		alert("You a trip yet!");
-// 		return false;
-// 	}
-// 	location.assign("trips.html");
+function displaySeats(numberofSeats,imgLeft,imgRight){
+	   var srcLeft="../img/seats/"+imgLeft+".png";
+	   var srcRight="../img/seats/"+imgRight+".png";
+			for (var i = 1; i <= numberofSeats; i++) { 
 
-// });
+					if (i <= 6) { //i 1:6
+
+                    
+						document.getElementsByClassName("status")[i - 1].src =srcLeft ;
+					}
+					else {  // i 7:12
+
+						document.getElementsByClassName("status")[i - 1].src = srcRight;
+					}
+
+
+				}
+}
