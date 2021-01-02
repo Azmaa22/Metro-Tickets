@@ -29,7 +29,7 @@ $(document).ready(function(){
     if(val=='Read More')
     {  $('#history').css({"height":"1550px"});
        $('#hispara').css({"overflow":"visible"});
-       $('#hisbtn').css({"margin-top":"520px","margin-left":"230px"});
+       $('#hisbtn').css({"margin-top":"563px","margin-left":"230px"});
        $('#hisbtn').attr('value','Read Less');
       }
     else{

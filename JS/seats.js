@@ -55,7 +55,7 @@ function bookNow() {
 		alert("please enter number");
 	}
 	else {
-		if (intVal != 0) {
+		if (intVal != 12) {
 			for (var j = 1; j < intVal; j++) {
 				// document.getElementsByClassName("status")[j].src = "../img/seats/7.png";
 				if (j <= 6) { //i 1:6
@@ -93,32 +93,8 @@ function bookNow() {
 			else { alert("Please enter less number of seats :("); }
 
 		}
-		//in case intVal=0			 
 		else {
-
-			remain = totalNum - intVal;///12- oldValue of cookie "the first time will be 0 "
-
-			if (numChair <= remain) {
-				newVal = numChair + intVal; ///update cookie
-				$_C().setCookie("number_of_chair", newVal);
-				for (var i = 1; i <= newVal; i++) { ///to start change new images
-					document.getElementsByClassName("status")[i - 1].src = "../img/seats/7.png";
-
-					if (i <= 6) { //i 1:6
-
-
-						document.getElementsByClassName("status")[i - 1].src = "../img/seats/7.png";
-					}
-					else {  // i 7:12
-
-						document.getElementsByClassName("status")[i - 1].src = "../img/seats/6.png";
-					}
-
-				}
-				alert("Congratulation :) Seats Booking is Done");
-			} else {
-				alert("Please enter less number of seats :)");
-			}
+			alert("No available Seats");
 		}
 	}
 }
@@ -158,7 +134,7 @@ function cancelBook() {
 			}
 			alert("Cancelation Done");
 			location.reload();
-		} else { alert("Not cancelled :("); }
+		} else { alert("The number you entered is more than your booked seats :("); }
 	}
 
 }

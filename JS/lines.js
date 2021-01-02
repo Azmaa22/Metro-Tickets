@@ -74,11 +74,11 @@ function NumofStations()
                 Distance = Math.abs(FromIndex-14) + Math.abs(ToIndex - 13);
             else if(Fromchecked == "El-Mounib-Shubra El-Kheima Line" && Tochecked == "ElMarg-Helwan Line")//2->1 h7wl shohda2 index 13->14
                 Distance = Math.abs(FromIndex - 13) + Math.abs(ToIndex-14);
-            else if(Fromchecked == "El-Mounib-Shubra El-Kheima Line" && Tochecked ==  "Adly Mansour-Attaba")//2->3 h7wl 3atba index:12->19
+            else if(Fromchecked == "El-Mounib-Shubra El-Kheima Line" && Tochecked ==  "Adly Mansour-Attaba Line")//2->3 h7wl 3atba index:12->19
                 Distance = Math.abs(FromIndex-12) + Math.abs(ToIndex - 19);   
-            else if(Fromchecked ==  "Adly Mansour-Attaba"  && Tochecked == "El-Mounib-Shubra El-Kheima Line")//3->2 h7wl  index:19->12
+            else if(Fromchecked ==  "Adly Mansour-Attaba Line"  && Tochecked == "El-Mounib-Shubra El-Kheima Line")//3->2 h7wl  index:19->12
                 Distance = Math.abs(FromIndex-19) + Math.abs(ToIndex - 12); 
-             else if(Fromchecked == "ElMarg-Helwan Line"   && Tochecked == "Adly Mansour-Attaba")//1->2->3 h7wl shohda2 then 3atba 
+             else if(Fromchecked == "ElMarg-Helwan Line"   && Tochecked == "Adly Mansour-Attaba Line")//1->2->3 h7wl shohda2 then 3atba 
                  //from:14-->13:12-->19:to
              {
                  Distance = Math.abs(FromIndex-14) + Math.abs(ToIndex - 19);
@@ -87,7 +87,7 @@ function NumofStations()
                  Distance++; //1 mn shohda l 3atba
              }
             
-            else if(Fromchecked == "Adly Mansour-Attaba" && Tochecked == "ElMarg-Helwan Line" )//3->2->1 h7wl 3atba then shohda 
+            else if(Fromchecked == "Adly Mansour-Attaba Line" && Tochecked == "ElMarg-Helwan Line" )//3->2->1 h7wl 3atba then shohda 
                  //from:19-->12:13-->14:to
             {
                 Distance = Math.abs(FromIndex-19) + Math.abs(ToIndex - 14);
@@ -111,7 +111,7 @@ function NumofStations()
         }
         else{
             addToCookie();
-            document.getElementById("message").innerHTML="";
+            //document.getElementById("message").innerHTML="";
             TicketPrice(Distance);
             location.assign("seats.html");
             return true;
@@ -130,9 +130,9 @@ function addToCookie()
 }
 
 
-$("#close").click(function(){
-    $("#Error").hide();
-})
+// $("#close").click(function(){
+//     $("#Error").hide();
+// })
 
 function addOption(val, select) 
 {

@@ -1,39 +1,28 @@
 var currentTime = new Date();
 
-if ($_C().getCookie("Price") == 5) {
-    $("#ticketDiv").css("background-color", "#F1E14F");
-    $("#Confirm").css("border-color", "#F1E14F")
-    .hover(function(){ $("#Confirm").css("background-color", "#F1E14F")},
-    function(){$("#Confirm").css("background-color", "white")})
+(function () {
+    var color;
+    if ($_C().getCookie("Price") == 5) {
+        color = "#F1E14F";
+    }
 
-    $("#back_To_Lines").css("border-color", "#F1E14F")
-    .hover(function(){ $("#back_To_Lines").css("background-color", "#F1E14F")},
-    function(){$("#back_To_Lines").css("background-color", "white")})   
-} 
+    else if ($_C().getCookie("Price") == 7) {
+        color = "#9FE891";
+    }
 
-else if ($_C().getCookie("Price") == 7) 
-{
-    $("#ticketDiv").css("background-color", "#9FE891");
-    $("#Confirm").css("border-color", "#9FE891")
-    .hover(function(){ $("#Confirm").css("background-color", "#9FE891")},
-    function(){$("#Confirm").css("background-color", "white")})
+    else {
+        color = "#FFB4B4";
+    }
 
-    $("#back_To_Lines").css("border-color", "#9FE891")
-    .hover(function(){ $("#back_To_Lines").css("background-color", "#9FE891")},
-    function(){$("#back_To_Lines").css("background-color", "white")}) 
-} 
+    $("#ticketDiv").css("background-color", color);
+    $("#Confirm").css("border-color", color)
+        .hover(function () { $("#Confirm").css("background-color", color) },
+            function () { $("#Confirm").css("background-color", "white") })
 
-else 
-{
-    $("#ticketDiv").css("background-color", "#FFB4B4");
-    $("#Confirm").css("border-color", "#FFB4B4")
-    .hover(function(){ $("#Confirm").css("background-color", "#FFB4B4")},
-    function(){$("#Confirm").css("background-color", "white")})
-
-    $("#back_To_Lines").css("border-color", "#FFB4B4")
-    .hover(function(){ $("#back_To_Lines").css("background-color", "#FFB4B4")},
-    function(){$("#back_To_Lines").css("background-color", "white")}) 
-}
+    $("#back_To_Lines").css("border-color", color)
+        .hover(function () { $("#back_To_Lines").css("background-color", color) },
+            function () { $("#back_To_Lines").css("background-color", "white") })
+})();
 
 $("#From").html($_C().getCookie("FromStation"));
 $("#To").html($_C().getCookie("ToStation"));
@@ -41,7 +30,7 @@ $("#price").html($_C().getCookie("Price"));
 
 $("#no_Seats").html($_C().getCookie("number_of_chair"));
 $("#TotalP").html(($_C().getCookie("number_of_chair")) * ($_C().getCookie("Price")));
-$("#Code").html("<p id='Code_paragraph'>Enter This code in any Fawry machine to complete your reservation within 24 hours</p>" + "<p id='codeNum'>"+Math.ceil(Math.random()*1000000000)+"</p>");
+$("#Code").html("<p id='Code_paragraph'>Enter This code in any Fawry machine to complete your reservation within 24 hours</p>" + "<p id='codeNum'>" + Math.ceil(Math.random() * 1000000000) + "</p>");
 $("#time").html(currentTime.getHours() + ":" + currentTime.getMinutes())
 
 $("#back_To_Lines").click(function (e) {
@@ -56,7 +45,7 @@ $("#back_To_Lines").click(function (e) {
 });
 
 $("#Trips").click(function () {
-    if ($_C().getCookie("ConfirmFlag")== 0){
+    if ($_C().getCookie("ConfirmFlag") == 0) {
         alert("You should confirm first");
         return false;
     }
@@ -66,8 +55,8 @@ $("#Trips").click(function () {
 });
 
 $("#Confirm").click(function () {
-    $_C().setCookie("ConfirmFlag",1,1);
+    $_C().setCookie("ConfirmFlag", 1, 1);
     location.assign("trips.html");
 });
- 
+
 
