@@ -12,12 +12,13 @@ var cookieVal, intVal, newVal;
 var remain;
 
 ///to hold number of chair cookie value for booked chairs still remain
-///when i refresh and in case that cookie is expired 
+
 cookieVal = $_C().getCookie("number_of_chair");
 if (cookieVal == 0) {
 	intVal = 0;
 
-} else {
+}
+else {
 
 	intVal = parseInt(cookieVal);
 }
@@ -26,14 +27,7 @@ displaySeats(intVal,7,6);  ///to start change new images
 
 
 function bookNow() {
-	cookieVal = $_C().getCookie("number_of_chair");
-	if (cookieVal == 0) {
-		intVal = 0;
 
-	} else {
-
-		intVal = parseInt(cookieVal);
-	}
 
 	numChair = parseInt(document.getElementById("num").value); ///to hold input value
 	///to be changes remain 

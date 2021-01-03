@@ -11,8 +11,7 @@ function home() {
     location.assign("home.html");
 }
 
-function check()
-{
+function check(){
     if($_C().getCookie("userVisit")==1)
     {
         location.assign("profile.html");
@@ -27,8 +26,7 @@ function check()
     }
 }
 
-function checklines()
-{
+function checklines(){
     if($_C().getCookie("userVisit")==1)
     {
         location.assign("lines.html");
